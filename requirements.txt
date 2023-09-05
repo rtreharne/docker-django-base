@@ -1,0 +1,13 @@
+Django>=3.2,<3.3
+psycopg2>=2.8.6,<2.9
+uWSGI>=2.0.19.1,<2.1
+redis>=3.5,<3.9
+celery>=5.0,<5.1
+django-celery-beat==2.1.0
+django-crispy-forms==1.14.0
+canvasapi==3.0.0
+django-jazzmin==2.6.0
+django-suit==0.2.28
+django-rangefilter==0.9.1
+django-admin-confirm==1.0.0
+

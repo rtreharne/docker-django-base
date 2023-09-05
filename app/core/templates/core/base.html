@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Prof. Joe Bloggs">
+    <meta name="generator" content="JB">
+    <title>Docker-Django-Base</title>
+
+  </head>
+  <body>
+
+
+<div>
+
+  {% if user.is_authenticated %}
+    <p>User: {{user.username}} | <a href="">Logout</a></p>
+  {% else %} 
+    <p><a href="">Login</a> | <a href="">Register</a></p>
+  {% endif %}
+
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <footer>
+    Created by <a href="mailto:">R. Treharne</a>&middot; &copy; 2023
+  </footer>
+</div>
+
+  </body>
+</html>
