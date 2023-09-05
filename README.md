@@ -46,21 +46,7 @@ docker-compose run --user root --rm app sh -c "python manage.py createsuperuser"
 ```
 Run `docker-compose up app` again to re-start local server.
 
-### Step 5 - Configure application
 
-Watch this video on how to configure application for first use:
-
-https://liverpool.instructuremedia.com/embed/f4c28100-c6ab-4e3a-8bc6-38d0229e2015
-
-Here is the Canvas Community Guide on how to manage/create API tokens:
-
-https://community.canvaslms.com/t5/Admin-Guide/How-do-I-manage-API-access-tokens-as-an-admin/ta-p/89
-
-### Step 5 - Run scheduler
-
-```bash
-docker-compose run -d --rm app sh -c "celery -A app beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler"
-```
 
 
 ## Deploying to AWS EC2 
@@ -126,7 +112,7 @@ Go to your GitHub repo's Settings/Deploy keys. Create a new deploy key and copy 
 
 Clone the repo using the SSH URL.
 ```bash
-git clone git@github.com:rtreharne/django-docker-compose-deployment.git
+git clone git@github.com:rtreharne/docker-django-base.git
 ```
 
 cd into the project directory.
@@ -155,11 +141,6 @@ docker-compose -f docker-compose-deploy.yml run --user root --rm app sh -c "pyth
 Start the container (use -d flag at end to run in background).
 ```bash
 docker-compose -f docker-compose-deploy.yml up -d
-```
-
-Start the scheduler
-```bash
-docker-compose run -d --rm app sh -c "celery -A app beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler"
 ```
 
 If you want to stop the container.
