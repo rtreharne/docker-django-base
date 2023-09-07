@@ -67,6 +67,26 @@ services:
       - db
       - redis
       - app
+
+  celery-beat:
+    build:
+      context: .
+    container_name: celery-beat-base
+    restart: always
+    command: celery -A app beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler --schedule=/vol/web/celerybeat-schedule
+    volumes:
+      - static-data:/vol/web/
+    depends_on:
+      - redis
+      - celery
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - SECRET_KEY=${SECRET_KEY}
+      - DB_HOST=db
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
   
 volumes:
   postgres-data:
